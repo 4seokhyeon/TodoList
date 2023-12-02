@@ -12,6 +12,7 @@ class EditTodoActivity : AppCompatActivity() {
     lateinit var binding: ActivityEditTodoBinding
     private var todo: Todo?=null
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditTodoBinding.inflate(layoutInflater)
@@ -31,11 +32,13 @@ class EditTodoActivity : AppCompatActivity() {
         binding.btnSave.setOnClickListener {
             val title = binding.etTodoTitle.text.toString()
             val content = binding.etTodoContent.text.toString()
+            val ageString = binding.age.text.toString()
+            val age = if (ageString.isNotEmpty()) ageString.toInt() else 0
             val currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm").format(System.currentTimeMillis())
 
             if (type.equals("ADD")) {
                 if (title.isNotEmpty() && content.isNotEmpty()) {
-                    val todo = Todo(0, title, content, currentDate, false)
+                    val todo = Todo(0, title, content,age, currentDate, false)
                     val intent = Intent().apply {
                         putExtra("todo", todo)
                         putExtra("flag", 0)
@@ -45,7 +48,7 @@ class EditTodoActivity : AppCompatActivity() {
                 }
             } else {
                 if (title.isNotEmpty() && content.isNotEmpty()) {
-                    val todo = Todo(todo!!.id, title, content, currentDate, todo!!.isChecked)
+                    val todo = Todo(todo!!.id, title, content, age, currentDate, todo!!.isChecked)
 
                     val intent = Intent().apply {
                         putExtra("todo", todo)

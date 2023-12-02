@@ -20,11 +20,14 @@ class TodoAdapter(val context: Context): RecyclerView.Adapter<TodoAdapter.TodoVi
         var title = itemView.findViewById<TextView>(R.id.tvTodoItem)
         var timestamp = itemView.findViewById<TextView>(R.id.tvTimeStamp)
         var checkbox = itemView.findViewById<CheckBox>(R.id.cbCheck)
+        var age = itemView.findViewById<TextView>(R.id.age)
 
         fun onBind(data: Todo) {
             title.text = data.title
             timestamp.text = data.timestamp
             checkbox.isChecked = data.isChecked
+            age.text = data.age.toString()
+
 
             if (data.isChecked) {
                 title.paintFlags = title.paintFlags or STRIKE_THRU_TEXT_FLAG

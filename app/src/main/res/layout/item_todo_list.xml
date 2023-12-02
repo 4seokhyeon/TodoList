@@ -28,6 +28,13 @@
         app:layout_constraintEnd_toStartOf="@+id/cbCheck"
         />
 
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Age"
+        app:layout_constraintTop_toBottomOf="@+id/tvTimeStamp" />
+
     <CheckBox
         android:id="@+id/cbCheck"
         android:layout_width="wrap_content"

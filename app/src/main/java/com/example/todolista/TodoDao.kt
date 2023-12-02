@@ -14,10 +14,10 @@ interface TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(dto: Todo)
 
-    @Query("select * from todoTable")
+    @Query("select * from TrainReservation")
     fun list(): LiveData<MutableList<Todo>>
 
-    @Query("select * from todoTable where id = (:id)")
+    @Query("select * from TrainReservation where id = (:id)")
     fun selectOne(id: Long): Todo
 
     @Update
